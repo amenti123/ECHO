@@ -1,0 +1,21 @@
+{
+    "version": "3.1",
+    "release_date": "2025-12-10 16:40:32",
+    "package_name": "smart_nexus_v3.1_2025-12-10_164032",
+    "features": [
+        "Centralized API System",
+        "Real-time Data Synchronization",
+        "Enhanced Cross-App Communication",
+        "RESTful API Endpoints",
+        "Automatic Data Sharing",
+        "Performance Optimizations",
+        "Comprehensive Donor Management System",
+        "Database-Backed Donor Lists (100+ Donors)",
+        "Database-Backed Currency Lists (80+ Currencies)",
+        "Auto-Currency Selection Based on Donor",
+        "Individual Donor Dropdowns (Not Grouped)",
+        "Cross-Application Donor/Currency Integration",
+        "Enhanced Grant Management System",
+        "Improved Projects Management with Donor Integration"
+    ]
+}
