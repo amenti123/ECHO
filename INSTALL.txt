@@ -1,0 +1,116 @@
+# SMART Nexus v3.0 Installation Instructions
+
+## Requirements
+- PHP 7.4 or higher
+- MySQL 5.7 or higher / MariaDB 10.2 or higher
+- Apache with mod_rewrite enabled (or Nginx)
+- Web server with write permissions
+
+### Optional (recommended): Real server-side PDF export
+This system supports **true PDF generation on the server** using **Dompdf**.
+
+- Composer installed (you said you have this on XAMPP)
+- PHP extensions commonly enabled in XAMPP: **mbstring**, **gd** (recommended)
+
+## Installation Steps
+
+1. **Extract Files**
+   - Extract this package to your web server directory
+   - Example: `C:\xampp\htdocs\health_reporting_system\` or `/var/www/html/health_reporting_system/`
+
+1b. **Install the PDF engine (Dompdf)**
+    - Open a terminal/PowerShell in the project folder (where `composer.json` is)
+    - Run:
+      ```
+      composer install
+      ```
+    - This will create a `/vendor` folder used for server-side PDF downloads.
+
+2. **Database Setup**
+   - Create a MySQL database (e.g., `health_system_reporting`)
+   - Update `config.php` with your database credentials:
+     ```php
+     define('DB_HOST', '127.0.0.1');
+     define('DB_NAME', 'health_system_reporting');
+     define('DB_USER', 'your_username');
+     define('DB_PASS', 'your_password');
+     ```
+
+3. **File Permissions**
+   - Make sure these directories are writable:
+     - `logs/` (create if doesn't exist)
+     - `uploads/` (create if doesn't exist)
+     - `uploads/logo/`
+     - `uploads/profile/`
+
+4. **Apache Configuration**
+   - Ensure `.htaccess` files are enabled:
+     ```apache
+     AllowOverride All
+     ```
+   - If using Nginx, configure URL rewriting
+
+5. **Access the System**
+   - Open your browser and navigate to: `http://localhost/health_reporting_system/`
+   - Default admin login:
+     - Email: `amenti.t@nexuseth.org`
+     - Password: `4011`
+
+6. **Verify Installation**
+   - Check API health: `http://localhost/health_reporting_system/api/health`
+   - Should return: `{"success":true,"status":"online"}`
+
+## Post-Installation
+
+1. **Change Default Password**
+   - Log in as admin
+   - Go to Profile page
+   - Change the default password
+
+2. **Configure Settings**
+   - Update organization logo (if admin)
+   - Configure user roles
+   - Set up projects
+
+3. **Test Cross-App Communication**
+   - Navigate between different apps (Projects, Dashboard, etc.)
+   - Verify data syncs between apps
+   - Check browser console for any errors
+
+## Troubleshooting
+
+### Database Connection Issues
+- Verify database credentials in `config.php`
+- Check MySQL service is running
+- Ensure database exists
+
+### Permission Errors
+- Check file permissions on `logs/` and `uploads/`
+- On Linux: `chmod -R 755 logs uploads`
+- On Windows: Ensure IIS_IUSRS has write access
+
+### API Not Working
+- Check `.htaccess` is enabled
+- Verify `api/index.php` exists
+- Check Apache error logs
+
+### Sync Not Working
+- Check database tables are created
+- Verify `services/data_sync.php` is accessible
+- Check PHP error logs
+
+## Support
+
+For issues or questions, check:
+- `README_UPGRADE.md` for detailed documentation
+- `logs/` directory for error logs
+- Browser console for JavaScript errors
+
+## Upgrade Notes
+
+If upgrading from v2.x:
+1. Backup your database first!
+2. Backup existing files
+3. Replace files with v3.0 versions
+4. System will auto-create new tables
+5. Test all functionality

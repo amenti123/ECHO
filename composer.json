@@ -1,0 +1,14 @@
+{
+  "name": "nexus-ethiopia/health-reporting-system",
+  "description": "SMART Nexus - Health Reporting System (HRS)",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "dompdf/dompdf": "^2.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
